@@ -12,28 +12,44 @@ namespace ChristmasKata2018
     }
 
     /// <summary>
-    /// Its christmas and once again young hopefuls are sending the requests to santas poor
-    /// overburdened workers - the elves (The unpaid army of 'workers' that arnt at all a
-    /// worrying christmas idea)
+    /// Santa has to handle letters from all kinds of location.
+    /// Some locations have certain properties that others do not.
+    /// In order to handle these differing behaviours the elves and their mischeif created a way of switching
+    /// handlers dynamically at runtime based upon some configuration passed in. 
     /// </summary>
+    /// <remarks>
+    /// Its christmas and once again young hopefuls are sending the requests to santas poor
+    /// overburdened workers - the elves (The unpaid army of 'workers' that arn't at all a
+    /// worrying christmas idea).
+    /// Due to scalability and the generally 'ingenious' nature of elves there can be different deployments
+    /// based upon letter origin.
+    /// This class enables overriding a default set of behaviour found in the base LetterHandlers for optionally specified
+    /// letter origins or present tiers in the names of the letter handlers.
+    /// </remarks>
     public class CustomLetterHandlerFactory : DefaultLetterHandlerFactory
     {
         private readonly string _siteName;
         private readonly string _platformName;
 
-        public CustomLetterHandlerFactory(string siteName, string platformName)
+        /// <summary>
+        /// Configures the Handler factory for a specific origin and present tier combination
+        /// </summary>
+        /// <param name="letterOrigin">Potentially a country or region in the space that santa operates in</param>
+        /// <param name="presentTier">Sadly christmas comes with the veiled threat and
+        /// assumption that some delightful darlings respond to coal better than carrots</param>
+        public CustomLetterHandlerFactory(string letterOrigin, string presentTier)
         {
-            _siteName = siteName;
-            _platformName = platformName;
+            _siteName = letterOrigin;
+            _platformName = presentTier;
             
         }
 
-        protected override Type GetPresentAllocatorType(RequestContext requestContext, string controllerName)
+        protected internal override Type GetLetterHandlerType(RequestContext requestContext, string letterHandlerName)
         {
-            return base.GetPresentAllocatorType(requestContext, GetSiteAndPlatformSpecificControllerName(controllerName)) ??
-                   base.GetPresentAllocatorType(requestContext, GetPlatformSpecificControllerName(controllerName)) ??
-                   base.GetPresentAllocatorType(requestContext, GetSiteSpecificControllerName(controllerName)) ??
-                   base.GetPresentAllocatorType(requestContext, controllerName);
+            return base.GetLetterHandlerType(requestContext, GetSiteAndPlatformSpecificControllerName(letterHandlerName)) ??
+                   base.GetLetterHandlerType(requestContext, GetPlatformSpecificControllerName(letterHandlerName)) ??
+                   base.GetLetterHandlerType(requestContext, GetSiteSpecificControllerName(letterHandlerName)) ??
+                   base.GetLetterHandlerType(requestContext, letterHandlerName);
         }
 
 
@@ -51,22 +67,5 @@ namespace ChristmasKata2018
         {
             return string.Concat(_siteName, controllerName);
         }
-    }
-
-    public class DefaultLetterHandlerFactory
-    {
-        protected virtual Type GetPresentAllocatorType(RequestContext requestContext, string presentProviderName)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    /// <summary>
-    /// When making a request of santa lots of data is captured about the nature of the request
-    /// and the properties / metadata of the caller. These pieces of information are used in order to
-    /// help ascertain what tier of presents - if any at all - are appropriate. 
-    /// </summary>
-    public class RequestContext
-    {
     }
 }
