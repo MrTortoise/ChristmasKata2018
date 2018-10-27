@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace ChristmasKata2018
 {
@@ -13,18 +9,24 @@ namespace ChristmasKata2018
     /// </summary>
     public class RequestContext
     {
-        public AddressData AddressData { get; set; }
-        public HttpContext HttpContext { get; set; }
+        public RequestContext()
+        {
+            
+        }
+
+        public RequestContext(HttpContextBase httpContext, AddressData addressData)
+        {
+            HttpContext = httpContext as HttpContext;
+            AddressData = addressData;
+        }
+        
+        public AddressData AddressData { get; }
+        public HttpContext HttpContext { get; }
     }
 
-    public class HttpContext
-    {
-        public Request Request { get; set; }
-    }
 
-    public class Request
+    public class HttpContext  : HttpContextBase
     {
-        public string Path { get; set; }
     }
 
     public class AddressData
@@ -32,8 +34,6 @@ namespace ChristmasKata2018
         public Dictionary<string, IEnumerable<AddressData>> Values { get; private set; }
         public Dictionary<string, object> DataTokens { get; set; }
         public Address Address { get; set; }
-
-    
     }
 
     public class Address
@@ -45,10 +45,5 @@ namespace ChristmasKata2018
         {
             return new AddressData();
         }
-    }
-
-
-    public class DataToken
-    {
     }
 }

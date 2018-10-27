@@ -10,17 +10,13 @@ namespace ChristmasKata2018
         public const string Area = "area";
         public const string LetterHandler = "letterHandler";
 
-        // Used to provide the action descriptors to consider for attribute routing
-        public const string Actions = "MS_DirectRouteActions";
+        public const string Actions = "MS_DirectAddressActions";
 
-        // Used to allow customer-provided disambiguation between multiple matching attribute routes
-        public const string Order = "MS_DirectRouteOrder";
+        public const string Order = "MS_DirectAddressOrder";
 
-        // Used to prioritize routes to actions for link generation
-        public const string TargetIsAction = "MS_DirectRouteTargetIsAction";
+        public const string TargetIsAction = "MS_DirectAddressTargetIsAction";
 
-        // Used to allow URI constraint-based disambiguation between multiple matching attribute routes
-        public const string Precedence = "MS_DirectRoutePrecedence";
+        public const string Precedence = "MS_DirectAddressPrecedence";
 
         public const string DirectAddressMatches = "MS_DirectAddressMatches";
     }
