@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ChristmasKata2018
+namespace ChristmasKata2018.SeventhCircleOfChristmas
 {
     public interface IDependencyResolver
     {

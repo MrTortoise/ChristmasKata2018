@@ -3,49 +3,15 @@
 // Adapted for a Kata by John Nicholas (for the worse)
 
 using System;
-using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace ChristmasKata2018
+namespace ChristmasKata2018.SeventhCircleOfChristmas
 {
-    public interface ILetterHandlerFactory
-    {
-        ILetterHandler CreateLetterHandler(RequestContext requestContext, string letterHandlerName);
-        SessionStateBehavior GetLetterHandlerSessionBehavior(RequestContext requestContext, string letterHandlerName);
-        void ReleaseLetterHandler(ILetterHandler letterHandler);
-    }
-
-    public class SessionStateBehavior
-    {
-        public static SessionStateBehavior Default { get; private set; } = new SessionStateBehavior();
-    }
-
-    public interface ILetterHandler
-    {
-        void Execute(RequestContext requestContext);
-    }
-
-    internal interface IResolver<T>
-    {
-        T Current { get; }
-    }
-
-    public class Resolver<T> : IResolver<T>
-    {
-        public T Current { get; set; }
-    }
-
-    public interface ILetterHandlerActivator
-    {
-        ILetterHandler Create(RequestContext requestContext, Type letterHandlerType);
-    }
-
     public class DefaultLetterHandlerFactory : ILetterHandlerFactory
     {
         private static readonly ConcurrentDictionary<Type, SessionStateBehavior> _sessionStateCache =
@@ -433,34 +399,6 @@ namespace ChristmasKata2018
                         ex);
                 }
             }
-        }
-    }
-
-    public class SessionStateAttribute : Attribute
-    {
-        public SessionStateBehavior Behavior { get; set; } = new SessionStateBehavior();
-    }
-
-    internal interface IBuildManager
-    {
-        ICollection GetReferencedAssemblies();
-        Stream ReadCachedFile(string fileName);
-        Stream CreateCachedFile(string fileName);
-    }
-
-    internal class LetterHandlerBuilder
-    {
-        public DefaultNamespaces DefaultNamespaces { get; private set; }
-        public LetterHandlerBuilder Current { get; set; }
-    }
-
-    internal class DefaultNamespaces
-    {
-        public int Count { get; set; } = 1;
-        
-        public static implicit operator int(DefaultNamespaces d)
-        {
-            return d.Count;
         }
     }
 }

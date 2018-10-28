@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace ChristmasKata2018
+namespace ChristmasKata2018.SeventhCircleOfChristmas
 {
     internal class SingleServiceResolver<TService> : IResolver<TService>
         where TService : class

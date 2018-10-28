@@ -9,7 +9,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace ChristmasKata2018
+namespace ChristmasKata2018.SeventhCircleOfChristmas
 {
     public class DependencyResolver
     {

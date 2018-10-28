@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace ChristmasKata2018
+namespace ChristmasKata2018.SeventhCircleOfChristmas
 {
     internal sealed class LetterHandlerTypeCache
     {

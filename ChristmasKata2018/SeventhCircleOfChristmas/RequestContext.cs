@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ChristmasKata2018
+namespace ChristmasKata2018.SeventhCircleOfChristmas
 {
     /// <summary>
     /// When making a request of santa lots of data is captured about the nature of the request

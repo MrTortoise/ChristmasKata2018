@@ -5,9 +5,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using ChristmasKata2018;
 
-namespace ChristmasKata2018
+namespace ChristmasKata2018.SeventhCircleOfChristmas
 {
     internal static class TypeCacheUtil
     {
@@ -101,75 +100,6 @@ namespace ChristmasKata2018
         private static bool TypeIsPublicClass(Type type)
         {
             return (type != null && type.IsPublic && type.IsClass && !type.IsAbstract);
-        }
-    }
-
-    internal class TypeCacheSerializer
-    {
-        public List<Type> DeserializeTypes(StreamReader reader)
-        {
-            return new List<Type>();
-        }
-
-        public void SerializeTypes(IList<Type> matchingTypes, StreamWriter writer)
-        {
-            
-        }
-    }
-
-    internal class BuildManager
-    {
-        public static object GetObjectFactory(string virtualPath, bool throwIfNotFound)
-        {
-            return new BuildManager();
-        }
-
-        public static Type GetCompiledType(string virtualPath)
-        {
-            return typeof(string);
-        }
-
-        public static ICollection GetReferencedAssemblies()
-        {
-           return new List<string>();
-        }
-
-        public static Stream ReadCachedFile(string fileName)
-        {
-            return Stream.Null;
-        }
-
-        public static Stream CreateCachedFile(string fileName)
-        {
-           return Stream.Null;
-        }
-    }
-
-    internal sealed class BuildManagerWrapper : IBuildManager
-    {
-//        bool IBuildManager.FileExists(string virtualPath)
-//        {
-//            return BuildManager.GetObjectFactory(virtualPath, throwIfNotFound: false) != null;
-//        }
-
-//        Type IBuildManager.GetCompiledType(string virtualPath)
-//        {
-//            return BuildManager.GetCompiledType(virtualPath);
-//        }
-
-        ICollection IBuildManager.GetReferencedAssemblies()
-        {
-            return BuildManager.GetReferencedAssemblies();
-        }
-
-        Stream IBuildManager.ReadCachedFile(string fileName)
-        {
-            return BuildManager.ReadCachedFile(fileName);
-        }
-
-        Stream IBuildManager.CreateCachedFile(string fileName)
-        {
-            return BuildManager.CreateCachedFile(fileName);
         }
     }
 }

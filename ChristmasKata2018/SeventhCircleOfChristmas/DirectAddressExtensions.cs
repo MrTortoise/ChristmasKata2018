@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ChristmasKata2018
+namespace ChristmasKata2018.SeventhCircleOfChristmas
 {
     internal static class DirectAddressExtensions
     {
@@ -275,20 +275,4 @@ namespace ChristmasKata2018
             AddressData.Values[key] = value;
         }
     }
-
-    internal class AddressValueDictionary : Dictionary<string, decimal>
-    {
-    }
-
-    internal class ActionDescriptor
-    {
-        public LetterHandlerDescriptor LetterHandlerDescriptor { get; set; }
-    }
-
-    internal class LetterHandlerDescriptor
-    {
-        public Type LetterHandlerType { get; set; }
-    }
-
-
 }

@@ -1,10 +1,10 @@
 using System;
-using System.Collections; 
+using System.Collections;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization; 
+using System.Globalization;
 using System.Security.Principal;
 
-namespace ChristmasKata2018 { 
+namespace ChristmasKata2018.SeventhCircleOfChristmas { 
     // from ms docs 
 
   
