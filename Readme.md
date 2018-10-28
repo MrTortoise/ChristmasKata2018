@@ -1,6 +1,22 @@
 # Christmas Kata 2018
 
-[Here](./CustomLetterHandlerFactory.cs)
+[This is the file to concerntrate upon](./CustomLetterHandlerFactory.cs)
+
+This kata is about refactoring to make something easy.
+No use of MOQ allowed - if this was written well it wouldn't need it.
+
+Feel free to solve this in anyway you wish. This was taken from a live example.
+I have taken some of the code from that to attempt to replicate its 
+complexities. 
+
+## TLDR
+
+Put tests around the above file to bring out its current specification, 
+then implement a couple of requirements. Just bear in mind that from where 
+this code is located it is not possible to know about the actual range of 
+Letter Handlers - however you do know that not every combination exists 
+and overrides are sparse  
+
 
 ## Background
 
@@ -16,7 +32,7 @@ Also due to their lack of time they are unwilling to even provide a working
 harness. So we have the extremities of a system, no idea about how it is
 really used and hooked up but a requirement to make a change.
 
-Its almost like you just joined a scrum team at 'Faceless Corp'.g
+Its almost like you just joined a scrum team at 'Faceless Corp' - Merry Christmas
 
 ## Integration informatioon
 The part of the process we have been made aware of though is that there 
@@ -44,7 +60,7 @@ people sending santa gifts for other people. In terms of a change, if
 with the string MotherChristmas in their names will override the base 
 letter handler. We are not concerned with the actual behaviour of the 
 handler here
-
+                                  
 2. If the letter origin is Yorkshire and the present tier is set to coal
 then a special MontyPythonLetterHandler should be used. Moreover we know
 there are going to be many more Christmas Eggs such as this.
