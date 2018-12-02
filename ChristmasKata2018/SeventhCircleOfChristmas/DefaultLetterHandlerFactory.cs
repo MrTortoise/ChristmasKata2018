@@ -205,6 +205,7 @@ namespace ChristmasKata2018.SeventhCircleOfChristmas
                 });
         }
 
+   
         protected internal virtual Type GetLetterHandlerType(RequestContext requestContext, string letterHandlerName)
         {
             if (requestContext == null)
@@ -261,6 +262,9 @@ namespace ChristmasKata2018.SeventhCircleOfChristmas
 
             // if all else fails, search every namespace
             return GetLetterHandlerTypeWithinNamespaces(route, letterHandlerName, null /* namespaces */);
+            
+            
+            // If you are reading this then you probably want to do something different.
         }
 
         private static Type GetLetterHandlerTypeFromDirectRoute(AddressData addressData)

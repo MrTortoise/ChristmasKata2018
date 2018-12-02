@@ -6,13 +6,12 @@ namespace ChristmasKata2018
     /// <summary>
     /// Santa has to handle letters from all kinds of location.
     /// Some locations have certain properties that others do not.
-    /// In order to handle these differing behaviours the elves and their mischeif created a way of switching
+    /// In order to handle these differing behaviours the elves and their mischief created a way of switching
     /// handlers dynamically at runtime based upon some configuration passed in. 
     /// </summary>
     /// <remarks>
     /// Its christmas and once again young hopefuls are sending the requests to santas poor
-    /// overburdened workers - the elves (The unpaid army of 'workers' that arn't at all a
-    /// worrying christmas idea).
+    /// overburdened workers - the elves (The unpaid army of 'workers' that arn't at all a worrying christmas idea).
     /// Due to scalability and the generally 'ingenious' nature of elves there can be different deployments
     /// based upon letter origin.
     /// This class enables overriding a default set of behaviour found in the base LetterHandlers for optionally specified
