@@ -19,11 +19,7 @@ So I thought let's see how the XP bods do!
 
 ## TLDR
 
-Put tests around the above file to bring out its current specification, 
-then implement a couple of requirements. Just bear in mind that from where 
-this code is located it is not possible to know about the actual range of 
-Letter Handlers - however you do know that not every combination exists 
-and overrides are sparse.  
+Put tests around the above file to bring out its current specification
 
 
 ## Background
