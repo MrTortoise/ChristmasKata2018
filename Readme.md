@@ -1,13 +1,21 @@
 # Christmas Kata 2018
 
-[This is the file to concerntrate upon](./CustomLetterHandlerFactory.cs)
+[This is the file that needs tests adding](./ChristmasKata2018/CustomLetterHandlerFactory.cs)
 
 This kata is about refactoring to make something easy.
-No use of MOQ allowed - if this was written well it wouldn't need it.
+No use of MOQ allowed.
+
+There is a simple way.
 
 Feel free to solve this in anyway you wish. This was taken from a live example.
 I have taken some of the code from that to attempt to replicate its 
 complexities. 
+
+This kata started as we wanted to get more examples of possible ways to
+factor this to make it testable. It was felt that the way we found was a bit meh.
+As a result I ran a couple of katas on it - but nobody managed to make it testable in an hour.
+
+So I thought let's see how the XP bods do!
 
 ## TLDR
 
@@ -15,7 +23,7 @@ Put tests around the above file to bring out its current specification,
 then implement a couple of requirements. Just bear in mind that from where 
 this code is located it is not possible to know about the actual range of 
 Letter Handlers - however you do know that not every combination exists 
-and overrides are sparse  
+and overrides are sparse.  
 
 
 ## Background
@@ -24,15 +32,15 @@ The elves need to update their home rolled ERP (Elven Resource Planning) system.
 
 Santa feels it is time to return to roots and be able to respond to letters to 
 any of his hundreds of names. However due to difficulty of reading 
-all these (an ongoing eye condition) feels it will be necessary to extend
+all these (an ongoing eye condition) he feels it will be necessary to extend
 the existing functionality to accomodate these.
 
 Due to the secrecy of the elven systems they will not give us their code.
-Also due to their lack of time they are unwilling to even provide a working 
+Also due to a lack of time they are unwilling to even provide a working 
 harness. So we have the extremities of a system, no idea about how it is
 really used and hooked up but a requirement to make a change.
 
-Its almost like you just joined a scrum team at 'Faceless Corp' - Merry Christmas
+At least soon it will be a different year!
 
 ## Integration informatioon
 The part of the process we have been made aware of though is that there 
@@ -41,14 +49,11 @@ letters to the CustomerLetterHandlerFactory which is then responsible for
 producing the correct letter handler for that name + current config combination
 
 ## The goal
-Naturally there are no tests - this needs to be addressed as we know there
-are a lot of new requirements coming into this area. Moreover changes to 
-other parts of the system are likley to impact the user experience. It is
-required to abstract a specification for existing behaviour in order to 
-help direct work in these other areas and better clarify responsibilities.
+**Naturally there are no tests - this needs to be addressed** as we know there
+are a lot of new requirements coming into this area. 
 
-Several previous groups of hopefuls have failed at this. Unfortunatley this
-means there is now a deadline of about an evening of 'fun' to achieve testability.
+Moreover changes to other parts of the system are likely to impact the user experience.
+
 
 Should anyone manage this then there are the following requirements.
 
