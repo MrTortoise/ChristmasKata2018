@@ -27,6 +27,7 @@ namespace ChristmasKata2018.SeventhCircleOfChristmas
         public DefaultLetterHandlerFactory()
             : this(null, null, null)
         {
+           
         }
 
         public DefaultLetterHandlerFactory(ILetterHandlerActivator letterHandlerActivator)
@@ -40,6 +41,7 @@ namespace ChristmasKata2018.SeventhCircleOfChristmas
             if (letterHandlerActivator != null)
             {
                 _letterHandlerActivator = letterHandlerActivator;
+                
             }
             else
             {
@@ -80,7 +82,7 @@ namespace ChristmasKata2018.SeventhCircleOfChristmas
 
         internal LetterHandlerBuilder LetterHandlerBuilder
         {
-            get { return _letterHandlerBuilder ?? LetterHandlerBuilder.Current; }
+            get { return _letterHandlerBuilder ?? SeventhCircleOfChristmas.LetterHandlerBuilder.Current; }
             set { _letterHandlerBuilder = value; }
         }
 

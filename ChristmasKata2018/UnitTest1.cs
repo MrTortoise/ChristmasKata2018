@@ -1,3 +1,4 @@
+using ChristmasKata2018.SeventhCircleOfChristmas;
 using Xunit;
 
 namespace ChristmasKata2018
@@ -7,6 +8,8 @@ namespace ChristmasKata2018
         [Fact]
         public void Test1()
         {
+            var factory = new CustomLetterHandlerFactory("some", "values");
+            Assert.NotNull(factory.CreateLetterHandler(new RequestContext(), "test" ));
         }
     }
 }

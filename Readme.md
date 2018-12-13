@@ -42,7 +42,7 @@ At least soon it will be a different year!
 The part of the process we have been made aware of though is that there 
 is some kind of letter classifier plugged in the front that is forwarding
 letters to the CustomerLetterHandlerFactory which is then responsible for
-producing the correct letter handler for that name + current config combination
+producing the correct type of letter handler for that name + current config combination
 
 ## The goal
 **Naturally there are no tests - this needs to be addressed** as we know there
