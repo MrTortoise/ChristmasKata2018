@@ -21,6 +21,7 @@ namespace ChristmasKata2018
     {
         private readonly string _letterOrigin;
         private readonly string _presentTier;
+        public Func<RequestContext, string, Type> Getter;
 
         /// <summary>
         /// Configures the Handler factory for a specific origin and present tier combination
@@ -32,6 +33,7 @@ namespace ChristmasKata2018
         {
             _letterOrigin = letterOrigin;
             _presentTier = presentTier;
+            Getter = (context, name) => base.GetLetterHandlerType(context, name);
         }
 
         /// <summary>
@@ -45,10 +47,15 @@ namespace ChristmasKata2018
         /// <returns></returns>
         protected internal override Type GetLetterHandlerType(RequestContext requestContext, string letterHandlerName)
         {
-            return base.GetLetterHandlerType(requestContext, GetLetterOriginAndPresentTierSpecificLetterHandlerName(letterHandlerName)) ??
-                   base.GetLetterHandlerType(requestContext, GetLetterOriginSpecificLetterHandlerName(letterHandlerName)) ??
-                   base.GetLetterHandlerType(requestContext, GetPresentTierSpecificLetterHandlerName(letterHandlerName)) ??
-                   base.GetLetterHandlerType(requestContext, letterHandlerName);
+            return ChooseLetterHandlerType(requestContext, letterHandlerName);
+        }
+
+        public Type ChooseLetterHandlerType(RequestContext requestContext, string letterHandlerName)
+        {
+            return Getter(requestContext, GetLetterOriginAndPresentTierSpecificLetterHandlerName(letterHandlerName)) ??
+                   Getter(requestContext, GetLetterOriginSpecificLetterHandlerName(letterHandlerName)) ??
+                   Getter(requestContext, GetPresentTierSpecificLetterHandlerName(letterHandlerName)) ??
+                   Getter(requestContext, letterHandlerName);
         }
 
 

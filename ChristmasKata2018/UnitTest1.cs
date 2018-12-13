@@ -8,8 +8,20 @@ namespace ChristmasKata2018
         [Fact]
         public void AStartingPoint()
         {
+            bool wasCalled = false;
+            var requestContext = new RequestContext();
             var factory = new CustomLetterHandlerFactory("some", "values");
-            Assert.NotNull(factory.CreateLetterHandler(new RequestContext(), "test" ));
+            factory.Getter = (context, name) =>
+            {
+                Assert.Equal(requestContext, context);
+                Assert.Equal("somevaluestest", name);
+                wasCalled = true;
+                return typeof(LetterHandlers.HandWrittenLetterHandler);
+            };
+
+            factory.ChooseLetterHandlerType(requestContext, "test");
+            
+            Assert.True(wasCalled);
         }
     }
 }
