@@ -1,6 +1,6 @@
 # Christmas Kata 2018
 
-[This is the file that needs tests adding](./ChristmasKata2018/CustomLetterHandlerFactory.cs)
+[This is the file that needs tests adding](ChristmasKata2018/CustomLetterHandlerFactory.cs)
 
 This kata is about refactoring to make something easy.
 No use of MOQ allowed.
